@@ -1,57 +1,18 @@
 <script>
-	import Counter from '$lib/Counter.svelte';
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+<h2>Client-Console</h2>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</span>
+<h3>To learn more about how we made this see <a href="/about">here</a></h3>
 
-		to your new<br />SvelteKit app
-	</h1>
+<p>
+  This is a demo-client. This is not full functionality. We have provided
+  several possible layouts the client could make use of if it wanted to build a
+  further level of logins for end users.
+</p>
 
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
+<ul>
+  <li><a href="/admin">Admin layout</a></li>
+  <li><a href="/listener">Listener layout</a></li>
+</ul>
 
-	<Counter />
-</section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>
