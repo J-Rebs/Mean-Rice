@@ -72,7 +72,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    fill: #ff50f3;
+    fill: #6b3e00;
     width: 50vmax;
     z-index: -1;
     animation: move 30s ease-in-out infinite;
