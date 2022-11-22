@@ -75,7 +75,7 @@
     fill: #ff50f3;
     width: 50vmax;
     z-index: -1;
-    animation: move 50s ease-in-out infinite;
+    animation: move 3s ease-in-out infinite;
     transform-origin: 50% 50%;
   }
 
