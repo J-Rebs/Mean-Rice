@@ -16,7 +16,7 @@
   });
 </script>
 
-<div class="bg-lime-300 px-6 py-6 opacity-80 hover:opacity-100">
+<div class="bg-lime-300 px-6 py-6 opacity-80 hover:opacity-100 transition-opacity">
   <h2 class="text-lg">Client-Console</h2>
 
   <h3>
@@ -35,7 +35,7 @@
   <ul class="opacity-100">
     <li class="my-3">
       <button
-        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow "
+        class="transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
         ><a class="text-cyan-500 font-bold" href="/admin">Admin layout</a
         ></button
       >
@@ -43,7 +43,7 @@
 
     <li>
       <button
-        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        class="transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
         ><a class="text-cyan-500 font-bold" href="/admin" /><a
           class="text-cyan-500 font-bold"
           href="/listener">Listener layout</a
@@ -52,7 +52,7 @@
     </li>
   </ul>
 </div>
-<div class="blob blur-sm">
+<div class="blob blur-lg">
   <!-- This SVG is from https://codepen.io/Ali_Farooq_/pen/gKOJqx -->
   <svg
     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -75,7 +75,7 @@
     fill: #ff50f3;
     width: 50vmax;
     z-index: -1;
-    animation: move 3s ease-in-out infinite;
+    animation: move 30s ease-in-out infinite;
     transform-origin: 50% 50%;
   }
 
