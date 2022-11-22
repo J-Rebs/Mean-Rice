@@ -6,7 +6,9 @@
 
   onMount(async () => {
     try {
-      const res = await axios.get('https://music-tonic.herokuapp.com/client1-rest/listUsers');
+      const res = await axios.get(
+        "https://music-tonic.herokuapp.com/client1-rest/listUsers"
+      );
       quotes = res.data;
     } catch (e) {
       error = e;
@@ -14,24 +16,87 @@
   });
 </script>
 
-<h2 class="text-lg">Client-Console</h2>
+<div class="bg-lime-300 px-6 py-6 opacity-80 hover:opacity-100">
+  <h2 class="text-lg">Client-Console</h2>
 
-<h3>To learn more about how we made this see <a class="text-cyan-500 font-bold" href="/about">here</a></h3>
+  <h3>
+    To learn more about how we made this see <a
+      class="text-cyan-500 font-bold"
+      href="/about">here</a
+    >
+  </h3>
 
-<p>
-  This is a demo-client. This is not full functionality. We have provided
-  several possible layouts the client could make use of if it wanted to build a
-  further level of logins for end users.
-</p>
+  <p>
+    This is a demo-client. This is not full functionality. We have provided
+    several possible layouts the client could make use of if it wanted to build
+    a further level of logins for end users.
+  </p>
 
-<ul>
-  <li><a class="text-cyan-500 font-bold" href="/admin">Admin layout</a></li>
-  <li><a class="text-cyan-500 font-bold" href="/listener">Listener layout</a></li>
-</ul>
+  <ul class="opacity-100">
+    <li class="my-3">
+      <button
+        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow "
+        ><a class="text-cyan-500 font-bold" href="/admin">Admin layout</a
+        ></button
+      >
+    </li>
+
+    <li>
+      <button
+        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        ><a class="text-cyan-500 font-bold" href="/admin" /><a
+          class="text-cyan-500 font-bold"
+          href="/listener">Listener layout</a
+        ></button
+      >
+    </li>
+  </ul>
+</div>
+<div class="blob blur-sm">
+  <!-- This SVG is from https://codepen.io/Ali_Farooq_/pen/gKOJqx -->
+  <svg
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 310 350"
+  >
+    <path
+      d="M156.4,339.5c31.8-2.5,59.4-26.8,80.2-48.5c28.3-29.5,40.5-47,56.1-85.1c14-34.3,20.7-75.6,2.3-111  c-18.1-34.8-55.7-58-90.4-72.3c-11.7-4.8-24.1-8.8-36.8-11.5l-0.9-0.9l-0.6,0.6c-27.7-5.8-56.6-6-82.4,3c-38.8,13.6-64,48.8-66.8,90.3c-3,43.9,17.8,88.3,33.7,128.8c5.3,13.5,10.4,27.1,14.9,40.9C77.5,309.9,111,343,156.4,339.5z"
+    />
+  </svg>
+</div>
 
 <style>
-    .a {
-		font-weight: bold;
-		color: rgb(0, 145, 255);
-	}
+  /* blob animation SRC: https://css-tricks.com/blobs/ */
+  .blob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: #ff50f3;
+    width: 50vmax;
+    z-index: -1;
+    animation: move 50s ease-in-out infinite;
+    transform-origin: 50% 50%;
+  }
+
+  @keyframes move {
+    0% {
+      transform: scale(1) translate(10px, -30px);
+    }
+    38% {
+      transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
+    }
+    40% {
+      transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
+    }
+    78% {
+      transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
+    }
+    80% {
+      transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
+    }
+    100% {
+      transform: scale(1) translate(10px, -30px);
+    }
+  }
 </style>
