@@ -23,7 +23,7 @@
     To learn more about how we made this see <a
       class="text-cyan-500 font-bold"
       href="/about">here</a
-    >
+    >.
   </h3>
 
   <p>

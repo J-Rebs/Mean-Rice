@@ -13,7 +13,7 @@
     background-animate
   "
 >
-  <div class="opacity-80 bg-white hover:opacity-100 px-6 py-6">
+  <div class="opacity-80 bg-white px-6 py-6 hover:opacity-100 transition-opacity">
     <h2 class="text-lg">About</h2>
 
     <p class="text-base">
