@@ -140,5 +140,3 @@ let userIdLikeSong: string, songIdLikeSong: string;
 
 </div>
 
-<button>play song</button>
-<button>like song</button>
