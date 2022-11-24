@@ -1,7 +1,5 @@
 <script lang="ts">
   import axios from "axios";
-  import { stringify } from "postcss";
-  import Layout from "../+layout.svelte";
   import SvelteButton from "../../lib/SvelteButton.svelte";
 
   /**
@@ -44,12 +42,16 @@
       };
   async function addUser() {
     // axios format call src: https://rapidapi.com/guides/call-apis-svelte-axios, https://axios-http.com/docs/api_intro, https://masteringjs.io/tutorials/axios/delete 
+    userData.realName = String(userData.realName);
+    userData.userType = String(userData.userType);
+    userData.mainGenre = String(userData.mainGenre);
+    userData.age = String(userData.age);
     console.log("arguments recieved into add user are:", userData.realName, userData.userType, userData.mainGenre, userData.age);
     let error = null;
     try {
 
       const res = await axios.post(
-        "https://music-tonic.herokuapp.com/client1-rest/createUser", {userData}
+        `https://music-tonic.herokuapp.com/client1-rest/createUser?realname=${userData.realName}&usertype=${userData.userType}&maingenre=${userData.mainGenre}&age=${userData.age}`
       );
       addUserCallCount += 1;
       let addedUser = res.data
