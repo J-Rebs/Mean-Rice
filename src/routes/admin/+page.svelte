@@ -28,15 +28,15 @@
     <SvelteButton buttonItem="list users" action={listUsers} />
     <div class="px-4 py-4">
       {#key listUsersCallCount}
-        <ul>
+        <div class="grid auto-cols-auto auto-rows-auto gap-4">
           <!--each block src: https://svelte.dev/tutorial/each-blocks-->
           {#each userList as { userId, realName, userType, mainGenre, age }}
-            <li>
+            <div class="transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-cyan-500/50">
               userId: {userId} Name: {realName} userType: {userType} mainGenre: {mainGenre}
               age:{age}
-            </li>
+            </div>
           {/each}
-        </ul>
+        </div>
       {/key}
     </div>
   </div>
