@@ -76,7 +76,7 @@
           <!--each block src: https://svelte.dev/tutorial/each-blocks-->
           {#each userList as { userId, realName, userType, mainGenre, age }}
             <div
-              class="grid md:grid-cols-5 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-102 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-cyan-500/50"
+              class="grid md:grid-cols-5 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-102 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-indigo-500/50"
             >
               <div>
                 userId: {userId} Name: {realName} userType: {userType} mainGenre:
