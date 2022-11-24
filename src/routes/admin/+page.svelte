@@ -1,6 +1,12 @@
 <script>
   import axios from "axios";
   import SvelteButton from "../../lib/SvelteButton.svelte";
+
+  /**
+   * 
+   * Get List of Users 
+   * 
+   */
   let listUsersCallCount = 0;
   let userList = [];
   async function listUsers() {
@@ -20,18 +26,24 @@
       return ["Bad request"];
     }
   }
+
+  /**
+   * 
+   * Add User 
+   * 
+   */
 </script>
 
 <h1 class="text-lg w-screen text-center mx-auto font-bold">Admin</h1>
 <div class="px-4 py-4 auto-cols-auto">
   <div class="px-4 py-4">
-    <SvelteButton buttonItem="list users" action={listUsers} />
+    <SvelteButton buttonItem="List Users" action={listUsers} />
     <div class="px-4 py-4">
       {#key listUsersCallCount}
         <div class="grid auto-cols-auto auto-rows-auto gap-4">
           <!--each block src: https://svelte.dev/tutorial/each-blocks-->
           {#each userList as { userId, realName, userType, mainGenre, age }}
-            <div class="transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-cyan-500/50">
+            <div class="transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-indigo-500/50">
               userId: {userId} Name: {realName} userType: {userType} mainGenre: {mainGenre}
               age:{age}
             </div>
@@ -40,12 +52,28 @@
       {/key}
     </div>
   </div>
-  <div class="px-4 py-4">
-    <SvelteButton buttonItem="add user" action={listUsers} />
-    <div class="px-4 py-4" />
+  <div class="px-4 py-2">
+    <SvelteButton buttonItem="Add User" action={listUsers} />
+    <div class="px-4 py-2">
+        <form class="grid item-center">
+            <label>Real Name</label>
+            <input class="border border-gray-400" type="text" />
+            <label>User Type</label>
+            <input class="border border-gray-400" type="text" />
+            <label>MainGenre</label>
+            <input class="border border-gray-400" type="text" />
+            <label>Age</label>
+            <input class="border border-gray-400" type="text" />
+        </form>
+    </div>
   </div>
-  <div class="px-4 py-4">
-    <SvelteButton buttonItem="delete user" action={listUsers} />
-    <div class="px-4 py-4" />
+  <div class="px-4 py-2">
+    <SvelteButton buttonItem="Delete User" action={listUsers} />
+    <div class="px-4 py-2">
+        <form class="grid item-center">
+            <label>User ID</label>
+            <input class="border border-gray-400" type="text" />
+        </form>
+    </div>
   </div>
 </div>
