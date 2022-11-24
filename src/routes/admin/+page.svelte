@@ -60,10 +60,33 @@
     } catch (e) {
       error = e;
       addUserCallCount += 1;
-      alert("Adding a user ran into an error :( do better -- the Mean Rice team");
+      alert("Adding a user ran into an error");
       console.log("error in adding user",error);
       return null;
     }
+  }
+
+  let deleteUserCallCount = 0;
+  let deleteId: string;
+  async function deleteUser() {
+    let error = null;
+    try {
+
+      const res = await axios.delete(
+        `https://music-tonic.herokuapp.com/client1-rest/deleteUser?id=${deleteId}`
+      );
+      deleteUserCallCount += 1;
+      let deletedUser = res.data
+      console.log("deleted user is:", deletedUser);
+      return deletedUser;
+    } catch (e) {
+      error = e;
+      deleteUserCallCount += 1;
+      alert("Deleting a user ran into an error");
+      console.log("error in deleting user",error);
+      return null;
+    }
+    
   }
 </script>
 
@@ -102,21 +125,13 @@
         <input class="border border-gray-400 indent-2" placeholder="Age" type="text" bind:value={userData.age}/>
       </div>
     </div>
-    <div>
-        {userData.realName}
-        {userData.userType}
-        {userData.mainGenre}
-        {userData.age}
-        {addUserCallCount}
-    </div>
   </div>
   <!--Delete User Block---------------------------------------------------------------------------------------------------->
   <div class="px-4 py-2">
-    <SvelteButton buttonItem="Delete User" action={listUsers} />
+    <SvelteButton buttonItem="Delete User" action={deleteUser} />
     <div class="px-4 py-2">
       <form class="grid item-center">
-        <label>User ID</label>
-        <input class="border border-gray-400" type="text" />
+        <input class="border border-gray-400 indent-2" placeholder="User ID to Delete" type="text" bind:value={deleteId}/>
       </form>
     </div>
   </div>
