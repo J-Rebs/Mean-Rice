@@ -4,6 +4,7 @@
   let listUsersCallCount = 0;
   let userList = [];
   async function listUsers() {
+    // axios format call src: https://rapidapi.com/guides/call-apis-svelte-axios 
     let error = null;
     try {
       const res = await axios.get(
@@ -28,6 +29,7 @@
     <div class="px-4 py-4">
       {#key listUsersCallCount}
         <ul>
+          <!--each block src: https://svelte.dev/tutorial/each-blocks-->
           {#each userList as { userId, realName, userType, mainGenre, age }}
             <li>
               userId: {userId} Name: {realName} userType: {userType} mainGenre: {mainGenre}
@@ -40,12 +42,10 @@
   </div>
   <div class="px-4 py-4">
     <SvelteButton buttonItem="add user" action={listUsers} />
-    <div class="px-4 py-4">
-    </div>
+    <div class="px-4 py-4" />
   </div>
   <div class="px-4 py-4">
     <SvelteButton buttonItem="delete user" action={listUsers} />
-    <div class="px-4 py-4">
-    </div>
+    <div class="px-4 py-4" />
   </div>
 </div>
