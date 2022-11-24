@@ -1,7 +1,9 @@
 <script>
 </script>
 
-<div class="bg-lime-300 px-6 py-6 opacity-80 hover:opacity-100 transition-opacity">
+<div
+  class="bg-lime-300 px-6 py-6 opacity-80 hover:opacity-100 transition-opacity"
+>
   <h2 class="text-lg">Client-Console</h2>
 
   <h3>
@@ -19,20 +21,24 @@
 
   <ul class="opacity-100">
     <li class="my-3">
-      <button
-        class="transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-cyan-500/50"
-        ><a class="text-cyan-500 font-bold" href="/admin">Admin layout</a
-        ></button
-      >
+      <a class="text-cyan-500 font-bold" href="/admin">
+        <button
+          class="transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-cyan-500/50"
+        >
+          <p class="text-cyan-500">Admin layout</p></button
+        >
+      </a>
     </li>
 
     <li>
-      <button
-        class="transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-cyan-500/50"
-        ><a class="text-cyan-500 font-bold" href="/admin" /><a
-          class="text-cyan-500 font-bold"
-          href="/listener">Listener layout</a
-        ></button
+      <a class="text-cyan-500 font-bold" href="/listener" /><a
+        class="text-cyan-500 font-bold"
+        href="/listener"
+      >
+        <button
+          class="transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-cyan-500/50"
+          ><p class="text-cyan-500">Listener layout</p></button
+        ></a
       >
     </li>
   </ul>
