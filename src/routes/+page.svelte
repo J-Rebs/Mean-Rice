@@ -1,19 +1,4 @@
 <script>
-  import { onMount } from "svelte";
-  import axios from "axios";
-  let quotes = [];
-  let error = null;
-
-  onMount(async () => {
-    try {
-      const res = await axios.get(
-        "https://music-tonic.herokuapp.com/client1-rest/listUsers"
-      );
-      quotes = res.data;
-    } catch (e) {
-      error = e;
-    }
-  });
 </script>
 
 <div class="bg-lime-300 px-6 py-6 opacity-80 hover:opacity-100 transition-opacity">
