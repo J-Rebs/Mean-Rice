@@ -4,6 +4,15 @@
 
   /**
    *
+   * Specify client Id
+   * Development feature only to allow demo client to pretend to be different clients.
+   * Authentication is done via auth0.
+   *
+   */
+  let clientId: string;
+
+  /**
+   *
    * Get List of Users
    *
    */
@@ -14,7 +23,7 @@
     let error = null;
     try {
       const res = await axios.get(
-        "https://music-tonic.herokuapp.com/client1-rest/listUsers"
+        `http://localhost:8080/client1-rest/listUsers?clientid=${clientId}`
       );
       userList = res.data;
       listUsersCallCount += 1;
@@ -56,7 +65,7 @@
     let error = null;
     try {
       const res = await axios.post(
-        `https://music-tonic.herokuapp.com/client1-rest/createUser?realname=${userData.realName}&usertype=${userData.userType}&maingenre=${userData.mainGenre}&age=${userData.age}`
+        `http://localhost:8080/client1-rest/createUser?realname=${userData.realName}&usertype=${userData.userType}&maingenre=${userData.mainGenre}&age=${userData.age}&clientid=${clientId}`
       );
       addUserCallCount += 1;
       let addedUser = res.data;
@@ -77,7 +86,7 @@
     let error = null;
     try {
       const res = await axios.delete(
-        `https://music-tonic.herokuapp.com/client1-rest/deleteUser?id=${deleteId}`
+        `http://localhost:8080/client1-rest/deleteUser?id=${deleteId}&clientId=${clientId}`
       );
       deleteUserCallCount += 1;
       let deletedUser = res.data;
@@ -98,6 +107,23 @@
 >
   Admin
 </h1>
+<!--Client Id Block---------------------------------------------------------------------------------------------------->
+<div class="border border-gray-400 m-4 px-4 py-2 text-left font-bold">
+  Current Client ID is: {clientId}. To update please use form below.
+  <div class="px-4 py-2">
+    <div class="py-2">
+      <form class="grid m-0 item-center">
+        <input
+          class="border border-gray-400 indent-2"
+          placeholder="Demo allows impersonation of different clients; authentication via auth0"
+          type="text"
+          bind:value={clientId}
+        />
+      </form>
+    </div>
+  </div>
+</div>
+
 <div class="px-4 py-4 auto-cols-auto">
   <!--User List Block---------------------------------------------------------------------------------------------------->
   <div class="px-4 py-4">
