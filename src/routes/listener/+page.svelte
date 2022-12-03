@@ -3,17 +3,26 @@
   import axios from "axios";
   /**
    *
+   * Specify client Id
+   * Development feature only to allow demo client to pretend to be different clients.
+   * Authentication is done via auth0.
+   *
+   */
+  let clientId: string;
+
+  /**
+   *
    * play song
    *
    */
   let userId: string, songId: string, playlistId: string;
   let playSongCallCount = 0;
-  let analytics=[];
+  let analytics = [];
   async function playSong() {
     let error = null;
     try {
       const res = await axios.post(
-        `https://music-tonic.herokuapp.com/client1-rest/playsong?userid=${userId}&songid=${songId}&playlistid=${playlistId}`
+        `http://localhost:8080/client1-rest/playsong?userid=${userId}&songid=${songId}&playlistid=${playlistId}&clientid=${clientId}`
       );
       playSongCallCount += 1;
       let analyticsEntry = res.data;
@@ -29,23 +38,26 @@
     }
   }
 
-   /**
+  /**
    *
    * like song
    *
    */
-let userIdLikeSong: string, songIdLikeSong: string;
+  let userIdLikeSong: string, songIdLikeSong: string;
   let likeSongCallCount = 0;
   let songLikesCount = "🤷";
   async function likeSong() {
     let error = null;
     try {
       const res = await axios.put(
-        `https://music-tonic.herokuapp.com/client1-rest/likeSong?userid=${userIdLikeSong}&songid=${songIdLikeSong}`
+        `http://localhost:8080/client1-rest/likeSong?userid=${userIdLikeSong}&songid=${songIdLikeSong}&clientid=${clientId}`
       );
       likeSongCallCount += 1;
       songLikesCount = res.data;
-      console.log("like song is a success, current count of total song likes is:", songLikesCount);
+      console.log(
+        "like song is a success, current count of total song likes is:",
+        songLikesCount
+      );
       return songLikesCount;
     } catch (e) {
       error = e;
@@ -62,6 +74,25 @@ let userIdLikeSong: string, songIdLikeSong: string;
 >
   Listener
 </h1>
+
+<!--Client Id Block---------------------------------------------------------------------------------------------------->
+<div class="border border-gray-400 m-4 px-4 py-2 text-left font-bold">
+  Current Client ID is: {clientId}. To update please use form below.
+  <div class="px-4 py-2">
+    <div class="py-2">
+      <form class="grid m-0 item-center">
+        <input
+          class="border border-gray-400 indent-2"
+          placeholder="Demo allows impersonation of different clients; authentication via auth0"
+          type="text"
+          bind:value={clientId}
+        />
+      </form>
+    </div>
+  </div>
+</div>
+
+
 <div class="px-4 py-4 auto-cols-auto">
   <!--Play Song Block---------------------------------------------------------------------------------------------------->
   <div class="px-4 py-2">
@@ -90,21 +121,21 @@ let userIdLikeSong: string, songIdLikeSong: string;
     </div>
     <p class="font-bold px-4 py-2">Song Analytic Entries in Current Session:</p>
     {#key playSongCallCount}
-    <div class="grid auto-cols-auto auto-rows-auto gap-4 px-4">
-      <!--each block src: https://svelte.dev/tutorial/each-blocks-->
-      {#each analytics as { id, timestamp }}
-        <div
-          class="grid md:grid-cols-5 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-102 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-indigo-500/50"
-        >
-          <div>
-            id: {id} timestamp:{timestamp}
+      <div class="grid auto-cols-auto auto-rows-auto gap-4 px-4">
+        <!--each block src: https://svelte.dev/tutorial/each-blocks-->
+        {#each analytics as { id, timestamp }}
+          <div
+            class="grid md:grid-cols-5 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-102 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-indigo-500/50"
+          >
+            <div>
+              id: {id} timestamp:{timestamp}
+            </div>
           </div>
-        </div>
-      {/each}
-    </div>
-  {/key}
+        {/each}
+      </div>
+    {/key}
   </div>
-    <!--Like Song Block---------------------------------------------------------------------------------------------------->
+  <!--Like Song Block---------------------------------------------------------------------------------------------------->
   <div class="px-4 py-2">
     <SvelteButton buttonItem="Like Song" action={likeSong} />
     <div class="px-4 py-2">
@@ -125,18 +156,16 @@ let userIdLikeSong: string, songIdLikeSong: string;
     </div>
     <p class="font-bold px-4 py-2">Song Likes Count:</p>
     {#key likeSongCallCount}
-    <div class="grid auto-cols-auto auto-rows-auto gap-4 px-4">
-      <!--each block src: https://svelte.dev/tutorial/each-blocks-->
+      <div class="grid auto-cols-auto auto-rows-auto gap-4 px-4">
+        <!--each block src: https://svelte.dev/tutorial/each-blocks-->
         <div
           class="grid md:grid-cols-5 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-102 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-indigo-500/50"
         >
           <div>
-            🎶of Likes 💖: {songLikesCount} 
+            🎶of Likes 💖: {songLikesCount}
           </div>
         </div>
-    </div>
-  {/key}
+      </div>
+    {/key}
   </div>
-
 </div>
-
