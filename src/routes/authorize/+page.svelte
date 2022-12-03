@@ -1,31 +1,25 @@
 <script>
-    import axios from "axios";
-    import { onMount } from "svelte";
+  import axios from "axios";
+  import { onMount } from "svelte";
+  let res;
   
-    let token;
-  
-    onMount(async () => {
-      let options = {
-        method: "POST",
-        url: "https://dev-j67sh1xxw6ozyqup.us.auth0.com/oauth/token",
-        headers: { "content-type": "application/x-www-form-urlencoded" },
-        data: new URLSearchParams({
-          grantType: "client_credentials",
-          clientId: "DLX91mkDkmWN1dEBNo3hws0jZssIwNEO",
-          clientSecret:
-            "PZoXRbaRiZ83nBseqY1NSyzCbNj6X2H8s4ol3XeXAH2XV8BYaDNe2U-aT1TRsbWq",
-          audience: "https://music-tonic.herokuapp.com/",
-        }),
-      };
-  
-      const res = await axios.request(options);
-      token = res.data;
-      console.log("login token", token);
-    });
-  </script>
+  onMount(async () => {
+   /**
+    * 
+    * 
+    * 
+    */
+    var options = { method: 'POST',
+      url: 'https://dev-j67sh1xxw6ozyqup.us.auth0.com/oauth/token',
+      headers: { 'content-type': 'application/json' },
+      body: '{"client_id":"I8ilmR0YJ6OD1Vo2hTzRNHOpSJinmGUt","client_secret":"gol_AM1EaULwKFS_93pn53FrHdWLc5Oj10fCxv1VP_NIqPA6S0foHF2xr-AO3dlK","audience":"https://mean-rice.vercel.app/authorize","grant_type":"client_credentials"}' };
 
-<div class="px-4 py-4 font-bold text-lg">
-    Utilities page for demo client...verify token received {1}
-</div>
 
-  
+    console.log('authentication commenced...');
+    let res = await axios.request(options);
+    console.log('authentication terminated...');
+
+
+
+  });
+</script>

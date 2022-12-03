@@ -12,6 +12,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
+		"@types/auth0": "^2.35.7",
 		"autoprefixer": "^10.4.13",
 		"postcss": "^8.4.19",
 		"svelte": "^3.44.0",

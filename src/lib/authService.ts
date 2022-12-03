@@ -1,11 +1,10 @@
-import * as createAuth0ClientStuff from "@auth0/auth0-spa-js";
+import * as auth0 from "@auth0/auth0-spa-js";
+
 import type { Auth0Client, PopupLoginOptions } from "@auth0/auth0-spa-js";
 import { user, isAuthenticated, popupOpen } from "$lib/store";
 
-
-const createAuth0Client = createAuth0ClientStuff.createAuth0Client;
 export async function createClient(): Promise<Auth0Client> {
-  const auth0Client = await createAuth0Client({
+  const auth0Client = await auth0.createAuth0Client({
     domain: import.meta.env.VITE_AUTH0_DOMAIN as string,
     clientId: import.meta.env.VITE_APP_CLIENT_ID as string
   });
@@ -15,9 +14,8 @@ export async function createClient(): Promise<Auth0Client> {
 export async function loginWithPop(clientId: Auth0Client, options?: PopupLoginOptions): Promise<void> {
   popupOpen.set(true);
   try {
-    await clientId.loginWithPopup(options);
-
-    user.set(await clientId.getUser());
+    await clientId.loginWithRedirect(options);
+    user.set('Joe');
     isAuthenticated.set(true);
   } catch (e) {
     console.error(e);
@@ -29,4 +27,5 @@ export async function loginWithPop(clientId: Auth0Client, options?: PopupLoginOp
 export function logout(clientId: Auth0Client): void {
   clientId.logout();
 }
+
 

@@ -6,7 +6,9 @@
 	onMount(async () => {
 		$auth0Client = await auth.createClient();
 		isAuthenticated.set(await $auth0Client.isAuthenticated());
-		user.set(await $auth0Client.getUser());
+		let token = $auth0Client.getTokenSilently();
+		console.log('token received', token);
+		user.set($auth0Client.getUser());
 	});
 
 	function login() {
