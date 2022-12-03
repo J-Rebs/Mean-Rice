@@ -11,9 +11,9 @@
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: new URLSearchParams({
           grant_type: "client_credentials",
-          client_id: "6eZqG8pgM7D87N3GjyIPt8SrB8AeDoBb",
+          client_id: "DLX91mkDkmWN1dEBNo3hws0jZssIwNEO",
           client_secret:
-            "SlF6GWa5phb-jx3bNS_GcRTosVeYoSVvz3U5aAQlV-e7JZ6DkEzisdQlnEEmykwq",
+            "PZoXRbaRiZ83nBseqY1NSyzCbNj6X2H8s4ol3XeXAH2XV8BYaDNe2U-aT1TRsbWq",
           audience: "https://music-tonic.herokuapp.com/",
         }),
       };
