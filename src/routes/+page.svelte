@@ -1,4 +1,28 @@
 <script>
+  import { onMount } from "svelte";
+  import js from "jquery";
+
+  onMount(() => {
+    window.jq = js;
+    window.jq(document).ready(function () {
+      window.jq("#token-test").click(function () {        
+        var settings = {
+          async: true,
+          crossDomain: true,
+          url: "https://dev-fy8sudhpxibri3cs.us.auth0.com/oauth/token",
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          data: '{"client_id":"vC4k5tpW3742F8UjGGgHouidbTud26OM","client_secret":"Zc3uA9oJ_jtLFlj8jJYwVqUZBogLK5B2kCgKs39Axr-6e-fhlXC7Onk30bn-PPf4","audience":"https://music-tonic.herokuapp.com/","grant_type":"client_credentials"}',
+          
+        };
+        window.jq.ajax(settings).done(function (response) {
+          console.log(response);
+        });
+      });
+    });
+  });
 </script>
 
 <div
@@ -41,6 +65,10 @@
         ></a
       >
     </li>
+    <button
+      class="transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow shadow-lg shadow-cyan-500/50"
+      id="token-test"><p class="text-cyan-500">Token Test</p></button
+    >
   </ul>
 </div>
 <div class="blob blur-lg cursor-grabbing">
