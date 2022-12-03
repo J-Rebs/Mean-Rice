@@ -10,9 +10,9 @@
         url: "https://dev-j67sh1xxw6ozyqup.us.auth0.com/oauth/token",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         data: new URLSearchParams({
-          grant_type: "client_credentials",
-          client_id: "DLX91mkDkmWN1dEBNo3hws0jZssIwNEO",
-          client_secret:
+          grantType: "client_credentials",
+          clientId: "DLX91mkDkmWN1dEBNo3hws0jZssIwNEO",
+          clientSecret:
             "PZoXRbaRiZ83nBseqY1NSyzCbNj6X2H8s4ol3XeXAH2XV8BYaDNe2U-aT1TRsbWq",
           audience: "https://music-tonic.herokuapp.com/",
         }),
