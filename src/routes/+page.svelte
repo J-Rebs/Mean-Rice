@@ -1,11 +1,54 @@
 <script>
+  import {tokenStore} from "$lib/store";
+  import SvelteButton from "$lib/SvelteButton.svelte";
+  import axios from "axios";
+  axios.defaults.baseURL = "https://music-tonic.herokuapp.com";
+
+  async function signUp(){
+    try{
+    await axios.post("/client-auth/signup?username=client-1&password=supercool").then(function(response){
+        console.log(response)
+        $tokenStore = response.data;
+    });
+    
+    const AuthStr = String($tokenStore);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${AuthStr}`;
+  }catch(e)
+  {
+    alert('sign up failed');
+  }
+  }
+
+  async function signIn(){
+    try{
+    await axios.post("/client-auth/signin?username=client-1&password=supercool").then(function(response){
+        console.log(response)
+        $tokenStore = response.data;
+    });
+    
+    const AuthStr = String($tokenStore);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${AuthStr}`;
+  }catch(e)
+  {
+    alert('sign up failed');
+  }
+  }
 </script>
+
+
 
 <div
   class="bg-lime-300 px-6 py-6 opacity-80 hover:opacity-100 transition-opacity"
 >
   <h2 class="text-lg">Client-Console</h2>
-
+  <div class="py-4 grid-cols-1 gap-4">
+    <div class="py-2">
+      <SvelteButton buttonItem="Sign Up" action={signUp} />
+    </div>
+  <div>
+    <SvelteButton buttonItem="Sign In" action={signIn} />
+  </div>
+</div>
   <h3>
     To learn more about how we made this see <a
       class="text-cyan-500 font-bold"

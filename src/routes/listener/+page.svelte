@@ -22,7 +22,7 @@
     let error = null;
     try {
       const res = await axios.post(
-        `http://localhost:8080/client1-rest/playsong?userid=${userId}&songid=${songId}&playlistid=${playlistId}&clientid=${clientId}`
+        `/client1-rest/playsong?userid=${userId}&songid=${songId}&playlistid=${playlistId}&clientid=${clientId}`
       );
       playSongCallCount += 1;
       let analyticsEntry = res.data;
@@ -50,7 +50,7 @@
     let error = null;
     try {
       const res = await axios.put(
-        `http://localhost:8080/client1-rest/likeSong?userid=${userIdLikeSong}&songid=${songIdLikeSong}&clientid=${clientId}`
+        `/client1-rest/likeSong?userid=${userIdLikeSong}&songid=${songIdLikeSong}&clientid=${clientId}`
       );
       likeSongCallCount += 1;
       songLikesCount = res.data;

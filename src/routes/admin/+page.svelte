@@ -23,7 +23,7 @@
     let error = null;
     try {
       const res = await axios.get(
-        `http://localhost:8080/client1-rest/listUsers?clientid=${clientId}`
+        `/client1-rest/listUsers?clientid=${clientId}`
       );
       userList = res.data;
       listUsersCallCount += 1;
@@ -65,7 +65,7 @@
     let error = null;
     try {
       const res = await axios.post(
-        `http://localhost:8080/client1-rest/createUser?realname=${userData.realName}&usertype=${userData.userType}&maingenre=${userData.mainGenre}&age=${userData.age}&clientid=${clientId}`
+        `/client1-rest/createUser?realname=${userData.realName}&usertype=${userData.userType}&maingenre=${userData.mainGenre}&age=${userData.age}&clientid=${clientId}`
       );
       addUserCallCount += 1;
       let addedUser = res.data;
@@ -86,7 +86,7 @@
     let error = null;
     try {
       const res = await axios.delete(
-        `http://localhost:8080/client1-rest/deleteUser?id=${deleteId}&clientId=${clientId}`
+        `/client1-rest/deleteUser?id=${deleteId}&clientId=${clientId}`
       );
       deleteUserCallCount += 1;
       let deletedUser = res.data;
